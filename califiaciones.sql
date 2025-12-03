@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2025 a las 23:16:55
+-- Tiempo de generación: 03-12-2025 a las 23:31:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -72,6 +72,13 @@ CREATE TABLE `notas` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `notas`
+--
+
+INSERT INTO `notas` (`id_nota`, `tipo_nota`, `valor_nota`, `id_carrera`, `id_semestre`, `fecha_registro`, `id_usuario`) VALUES
+(5, 'parcial', 2.00, 1, 1, '2025-12-03 17:28:03', 1132222);
+
 -- --------------------------------------------------------
 
 --
@@ -129,8 +136,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `id_role`, `nombre`, `email`, `password`) VALUES
-(1112113, 1, 'dilan', 'dilansantiortizm@gmail.com', '$2y$10$.EmLg9n0l90mX6SqIbHY8uhOSFzX.PMdEmSJy1YXBqENSopX3DhHS'),
-(1132222, 2, 'pipe', 'pipe@gmail.com', '$2y$10$Spgb0cMad8RxnBEmBbbrWOsRL3T/fWA5eI78PS8BE6krL7ZXR6NiG');
+(1112113, 1, 'dilan', 'dilansantiortizm@gmail.com', '$2y$10$6fsPIDXtcUoZqde1B6rv.e1XaCrP.AZYGVAC4VcVU0bw0P5nfOhq6'),
+(1132222, 2, 'pipe', 'pipex@gmail.com', '$2y$10$ujCZdx4O0wpapfWc78hWIutLrohO.aK3CU51/pGsEUag/5kkOxR5m');
 
 --
 -- Índices para tablas volcadas
@@ -202,7 +209,7 @@ ALTER TABLE `detalle_notas`
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
