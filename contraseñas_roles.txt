@@ -1,2 +1,8 @@
-usuario dilansantiortizm@gmail.com
+administador dilansantiortizm@gmail.com
 contraseña 1106227312
+
+usuario juan@gmail.com
+contraseña juan123
+
+usuario pipex@gmail.com
+contraseña pipe123

@@ -145,7 +145,11 @@ $usuario = $sql->fetch(PDO::FETCH_ASSOC);
     <p>Consulta de notas a los usuarios</p>
     </div>
 
-    
+
+    <div class="card" onclick="location.href='crear_notas.php'">
+    <img src="" alt="puede crear todas las notas semestres y demas">
+    <p>puede crear todas las notas carreras y demas</p>
+    </div>
 
     </div>
 </body>

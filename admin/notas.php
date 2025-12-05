@@ -89,9 +89,9 @@ if (isset($_POST['guardar'])) {
             </select>
 
             <label class="mt-3">Valor de nota</label>
-            <input type="number" step="0.1" name="valor_nota" class="form-control" required>
+            <input type="number" step="0.1" min="0.0" max="5.0" name="valor_nota" class="form-control" required>
 
-            <button class="btn btn-primary mt-4 w-100" name="guardar">Guardar</button>
+            <button class="btn btn-primary mt-4 w-100" na   me="guardar">Guardar</button>
         </form>
     </div>
 
