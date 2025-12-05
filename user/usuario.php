@@ -58,7 +58,7 @@ $usuario = $sql->fetch(PDO::FETCH_ASSOC);
                         <p class="card-text">Valor de la nota<?php echo $resultado['valor_nota']; ?></p>
                         <p class="card-text">Carrera <?php echo $resultado['nombre_carrera']; ?></p>
                         <p class="card-text">id del semestre <?php echo $resultado['id_semestre']; ?></p>
-                        <p class="card-text">Fecha de registro <?php echo $resultado['fecha_registro']; ?></p>
+                        <p class="card-text">Fecha de registro de la nota <?php echo $resultado['fecha_registro']; ?></p>
                     </div>
                 </div>
             <?php } ?>

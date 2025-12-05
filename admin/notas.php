@@ -8,15 +8,23 @@ if (!isset($_SESSION['id_usuario'])) {
     header("Location: index.php");
     exit;
 }
+if(isset($_POST['eliminar'])){
+    $nota = $_POST['id_nota'];
+$sql_delete = $con->prepare("DELETE FROM notas WHERE id_nota = ?");
+    $sql_delete->execute([$nota]);
+}
 
 $semestres = $con->query("SELECT * FROM semestre")->fetchAll(PDO::FETCH_ASSOC);
 $carreras = $con->query("SELECT * FROM carrera")->fetchAll(PDO::FETCH_ASSOC);
+$notas = $con->query("SELECT * FROM notas")->fetchAll(PDO::FETCH_ASSOC);
 $usuarios = $con->query("SELECT * FROM usuario WHERE id_role = 2")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['guardar'])) {
 
     $id_usuario = $_POST['id_usuario'];
     $id_semestre = $_POST['id_semestre'];
+    $id_nota = $_POST['id_nota'];
+    $nombre_carrera = $_POST['nombre_carrera'];
     $id_carrera = $_POST['id_carrera'];
     $tipo_nota = $_POST['tipo_nota'];
     $valor_nota = $_POST['valor_nota'];
@@ -99,12 +107,13 @@ if (isset($_POST['guardar'])) {
             <th>Semestre</th>
             <th>Tipo Nota</th>
             <th>Valor</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
 
         <?php
-        $sql_show = $con->query("SELECT n.valor_nota, n.tipo_nota,s.nombre_semestre, c.nombre_carrera, u.nombre AS estudiante
+        $sql_show = $con->query("SELECT n.id_nota, n.valor_nota, n.tipo_nota,s.nombre_semestre, c.nombre_carrera, u.nombre AS estudiante
             FROM notas n INNER JOIN usuario u ON n.id_usuario = u.id_usuario
             INNER JOIN carrera c ON n.id_carrera = c.id_carrera INNER JOIN semestre s ON n.id_semestre = s.id_semestre
             ORDER BY n.id_nota DESC");
@@ -116,6 +125,19 @@ if (isset($_POST['guardar'])) {
                 <td><?= $fila['nombre_semestre'] ?></td>
                 <td><?= $fila['tipo_nota'] ?></td>
                 <td><?= $fila['valor_nota'] ?></td>
+                <td>
+                                <form method="POST" class="d-inline">
+                                    <input type="hidden" name="id_nota" value="<?= $fila['id_nota'] ?>">
+                                    <button class="btn btn-sm btn-danger" name="eliminar"
+                                        onclick="return confirm('Estás seguro de eliminar este usuario')">
+                                        Eliminar
+                                    </button>
+                                        
+                                    <a href=""
+                                    onclick="window.open('updatenotas.php?id_nota=<?= $fila['id_nota'] ?>', '', 'width=500, height=500, toolbar=no'); return false;"
+                                    class="btn btn-sm btn-warning">Editar</a>
+                                </form>
+                            </td>
             </tr>
         <?php } ?>
 
