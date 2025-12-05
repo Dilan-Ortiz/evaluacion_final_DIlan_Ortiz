@@ -5,8 +5,15 @@ require_once '../config/database.php';
 
 $db = new Database();
 $con = $db->conectar();
-$sql = $con->prepare("SELECT * FROM usuario");
-$sql->execute();
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../index.php");
+    exit;
+}
+$doc = $_SESSION['id_usuario'];
+
+$sql = $con->prepare("SELECT * FROM usuario where id_usuario = ?");
+$sql->execute([$doc]);
 $usuario = $sql->fetch(PDO::FETCH_ASSOC);
 ?>
 
